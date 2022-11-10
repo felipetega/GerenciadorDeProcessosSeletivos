@@ -1,0 +1,2 @@
+# GerenciadorDeProcessosSeletivos
+ Django Project
