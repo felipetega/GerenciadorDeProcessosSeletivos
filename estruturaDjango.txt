@@ -1,0 +1,40 @@
+manage.py{
+  CLI
+}
+
+models = database
+
+views = functions - request, response
+
+templates = html
+
+settings.py{ 
+DEBUG=TRUE - desenvolvendo
+DEBUG=FALSE - em produção
+
+ALLOWED_HOSTS = [] - IPs que podem acessar a aplicação
+
+INSTALLED_APPS = [] - APPs instalados
+
+TEMPLATES = [] - Templates
+
+DATABASE = {} - Banco de dados
+
+LANGUAGE_CODE = "pt-br" - Linguagem
+
+TIME_ZONE = "UTC" - Fuso Horário
+
+STATIC_URL = "static/" - Static Files
+}
+
+urls.py{
+  Roteamento da aplicação
+}
+
+na hora do deploy:
+wsgi.py{
+  Web Server Gateway Interface
+}
+asgi.py{
+  Asynchronous Server Gateway Interface
+}
