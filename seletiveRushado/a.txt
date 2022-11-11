@@ -1,4 +1,4 @@
-29:36
+32:28
 
 %HOMEPATH%\.virtualenvs\gerenciadorDeProcessosSeletivos\Scripts\activate.bat
 
