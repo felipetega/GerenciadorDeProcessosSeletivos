@@ -1,14 +1,73 @@
-29:36
+42:00
+50:33
 
+-VENV
 %HOMEPATH%\.virtualenvs\gerenciadorDeProcessosSeletivos\Scripts\activate.bat
 
+-INSTALL DEPENDENCIES
 pip install django
 pip install pillow
 python.exe -m pip install -U autopep8
 
+-START PROJECT
 django-admin startproject seletive .
 
+-RUN SERVER
 python manage.py runserver
 
-CREATE APP EMPRESA
-python manage.py startapp empresa
+-CREATE APP EMPRESA
+1.python manage.py startapp empresa
+
+2.settings.py
+INSTALLED-APPS = ['empresa']
+
+3.urls.py
+from django.urls import include
+urlpatterns = [
+  path('home/',include('empresa.urls'))
+  ]
+
+4.Criar urls.py em empresa
+from django import path
+from . import views
+urlpatterns = [
+  path('nova_empresa/', views.nova_empresa, name="nova_empresa")
+  ]
+
+5.views.py
+from django.http import HttpResponse
+def nova_empresa(request):
+  return HttpResponse('AAAAAAA')
+
+/home/nova_empresa
+
+-TEMPLATES
+1.settings.py
+import os
+'DIRS' = [os.path.join(BASE_DIR, 'templates')]
+
+2.mkdir templates raiz base.html
+
+3.mkdir templates empresa nova_empresa
+
+4.views.py
+def nova_empresa(request):
+  return render(request, 'nova_empresa.html')
+
+5.nova_empresa.html
+{% extends "base.html" %}
+
+{% block 'body' %}
+
+  AAAAAAA
+
+{% endblock %}
+
+-CSS
+1.settings.py
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'templates/static'),)
+STATIC_ROOT = os.path.join('static')
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
