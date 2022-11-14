@@ -1,5 +1,5 @@
-42:00
 50:33
+1:10
 
 -VENV
 %HOMEPATH%\.virtualenvs\gerenciadorDeProcessosSeletivos\Scripts\activate.bat
@@ -71,3 +71,20 @@ STATIC_ROOT = os.path.join('static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+2.mkdir
+raiz = templates = static = base = css,img,js = base.css
+raiz = templates = static = empresa = css,img,js = nova_empresa.css
+
+3.base.html
+<link href="{% static 'base/css/base.css' %}" rel="stylesheet">
+
+4.nova_empresa.html
+{% extends "base.html" %}
+{% load static %}
+
+{% block 'head' %}
+
+    <link href="{% static 'empresa/css/nova_empresa.css' %}" rel="stylesheet">
+
+{% endblock  %}
