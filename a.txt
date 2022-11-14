@@ -1,5 +1,4 @@
-50:33
-1:10
+1:21
 
 -VENV
 %HOMEPATH%\.virtualenvs\gerenciadorDeProcessosSeletivos\Scripts\activate.bat
@@ -88,3 +87,18 @@ raiz = templates = static = empresa = css,img,js = nova_empresa.css
     <link href="{% static 'empresa/css/nova_empresa.css' %}" rel="stylesheet">
 
 {% endblock  %}
+
+-DATABASE
+1.models.py
+Criar tabela(class) e colunas(var)
+
+2.python manage.py makemigrations
+
+3.python manage.py migrate
+
+4.admin.py
+from .models import class
+admin.site.register(class)
+
+-CREATE ADMIN
+1.python manage.py createsuperuser
