@@ -1,5 +1,5 @@
 1:21
-1:39
+1:58:50
 
 -VENV
 %HOMEPATH%\.virtualenvs\gerenciadorDeProcessosSeletivos\Scripts\activate.bat
@@ -103,3 +103,5 @@ admin.site.register(class)
 
 -CREATE ADMIN
 1.python manage.py createsuperuser
+
+-LINK models, views e html
