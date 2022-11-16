@@ -60,7 +60,13 @@
                               </select>
                           </td>
                           <td>
-                              Quantidade de vagas
+                            {% if empresa.qtd_vagas > 0 %}
+                            <img height=15px src="{% static 'empresa/img/green.png' %}">
+                            {{empresa.qtd_vagas}}
+                            {% else %}
+                            <img height=15px src="{% static 'empresa/img/red.jpg' %}">
+                            {{empresa.qtd_vagas}}
+                            {% endif %}
                           </td>
                           <td>
                               <a href="{% url 'excluir_empresa' empresa.id %}" class="btn-excluir">Excluir empresa</a>

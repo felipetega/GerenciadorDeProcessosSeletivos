@@ -1,5 +1,5 @@
-1:21
-finalizada
+aula1 - 1:21
+aula2 - 14:00
 
 -VENV
 %HOMEPATH%\.virtualenvs\gerenciadorDeProcessosSeletivos\Scripts\activate.bat
@@ -105,3 +105,4 @@ admin.site.register(class)
 1.python manage.py createsuperuser
 
 -LINK models, views e html
+1.views.py
