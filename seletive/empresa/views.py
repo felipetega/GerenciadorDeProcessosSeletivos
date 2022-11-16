@@ -48,9 +48,20 @@ def nova_empresa(request):
 
 def empresas(request):
     empresas = Empresa.objects.all()
+    tecnologias_filtrar = request.GET.get('tecnologias')
+    nome_filtrar = request.GET.get('nome')
+    #print(tecnologias_filtrar)
+    #print(nome_filtrar)
+    if tecnologias_filtrar:
+        empresas = empresas.filter(tecnologias=tecnologias_filtrar)
+
+    if nome_filtrar:
+        empresas = empresas.filter(nome__icontains=nome_filtrar)
+
+    tecnologias = Tecnologias.objects.all()
     #empresa_teste = Empresa.objects.get(nome='Discord')
     #print(empresa_teste.qtd_vagas())
-    return render(request, 'empresa.html', {'empresas': empresas})
+    return render(request, 'empresa.html', {'empresas': empresas, 'tecnologias':tecnologias})
 
 def excluir_empresa(request, id):
     empresa = Empresa.objects.get(id=id)

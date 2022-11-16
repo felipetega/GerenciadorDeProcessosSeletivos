@@ -1,5 +1,5 @@
 aula1 - 1:21
-aula2 - 14:00
+aula2 - 26:30
 
 -VENV
 %HOMEPATH%\.virtualenvs\gerenciadorDeProcessosSeletivos\Scripts\activate.bat
