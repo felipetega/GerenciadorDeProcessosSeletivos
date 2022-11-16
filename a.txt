@@ -1,5 +1,5 @@
 1:21
-1:58:50
+finalizada
 
 -VENV
 %HOMEPATH%\.virtualenvs\gerenciadorDeProcessosSeletivos\Scripts\activate.bat
