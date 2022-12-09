@@ -1,5 +1,7 @@
-aula1 - 1:21
+aula1 - 2:01
 aula2 - 26:30
+
+33:53
 
 -VENV
 %HOMEPATH%\.virtualenvs\gerenciadorDeProcessosSeletivos\Scripts\activate.bat
@@ -63,7 +65,7 @@ def nova_empresa(request):
 
 {% endblock %}
 
--CSS
+-STATIC FILES (MEDIA,CSS,IMG,JS)
 1.settings.py
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'templates/static'),)
@@ -92,17 +94,76 @@ raiz = templates = static = empresa = css,img,js = nova_empresa.css
 -DATABASE
 1.models.py
 Criar tabela(class) e colunas(var)
+class class1(models.Model):
+  tecnologia = models.CharField(max_length=50)
+  def __str__(self):
+    return self.tecnologia
 
 2.python manage.py makemigrations
 
 3.python manage.py migrate
 
 4.admin.py
-from .models import class
-admin.site.register(class)
+from .models import class1, class2
+admin.site.register(class1)
 
--CREATE ADMIN
-1.python manage.py createsuperuser
+5.python manage.py createsuperuser
+Cria admin
 
--LINK models, views e html
+-Interação database - html
 1.views.py
+from . models import class1
+def nova_empresa(request):
+  techs=class1.objects.all() //.filter()
+  return render(request, 'nova_empresa.html',{'techs':techs})
+
+3.nova_empresa.html
+for tech in techs
+  <option value="{{tech.id}}">{{tech}}</option>
+endfor
+
+<form action="{% url 'nova_empresa' %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
+
+4.views.py
+if request.method == "GET":
+elif request.method == "POST":
+  input = request.POST.get('inputName')
+  tecnologias = request.POST.getlist('tecnologias')
+  logo = request.FILES.get('logo')
+
+if (len(nome.strip()) == 0):
+  messages.add_message(request, constants.ERROR, 'Preencha todos os campos')
+  return redirect('/home/nova_empresa')
+
+if logo.size > 100_000_000:
+   messages.add_mes(request, constants ERR'A logo da empresa deve menos de 10MB')
+   return redirect('/hnova_empresa')
+
+empresa = Empresa(
+  logo=logo,
+  input=input
+)
+empresa.save()
+empresa.tecnologias(*tecnologias)
+empresa.save()
+messages.add_message(requeconstants.SUCCESS, 'Emprcadastrada com sucesso')
+return redirect('/nova_empresa')
+
+-MESSAGES/BOOTSTRAP
+1.settings.py
+MESSAGE_TAGS ={
+    constants.DEBUG: 'alert-primary',
+    constants.ERROR: 'alert-danger',
+    constants.SUCCESS: 'alert-success',
+    constants.INFO: 'alert-info',
+    constants.WARNING: 'alert-warning',
+}
+
+2.views.py
+from django.contrib import messages
+from django.contrib.messages import constants
+
+3.nova_empresa.html
+if messages
+  for message in messages
+    <section class="alert {{message.tags}}">{{message}}<section>
